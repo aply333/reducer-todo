@@ -1,20 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 
-const InputForm = props =>{
+const InputForm = (props) => {
+  const [input, setInput] = useState("");
+  const dispatch = props.dispatch;
 
-    const buttonHandler = e => {
-        e.preventDefault()
-    }
+  const newTask =
+    {
+      item: input,
+      completed: false,
+      id: (Math.random() * Math.random()).toString(9).substr(2, 9),
+    };
 
+  const buttonHandler = (e) => {
+    e.preventDefault();
+    console.log("newTaskLog", newTask);
+    dispatch({type: "ADD_TASK", payload: newTask})
+  };
 
-    return(
-        <div>
-            <form>
-                <input type="text" placeholder="new task"/>
-                <button>Add Task</button>
-            </form>
-        </div>
-    )
-}
+  const changeHandler = (e) => {
+    setInput(e.target.value);
+  };
+
+  return (
+    <div>
+      <form onSubmit={buttonHandler}>
+        <input type="text" placeholder="new task" onChange={changeHandler} />
+        <button>Add Task</button>
+      </form>
+    </div>
+  );
+};
 
 export default InputForm;
