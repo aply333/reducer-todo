@@ -1,3 +1,7 @@
 .taskList{
     text-align: left;
 }
+
+.done{
+    color:red;
+}

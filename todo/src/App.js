@@ -15,7 +15,9 @@ function App() {
   return (
     <div className="App">
       <Header/>
-      <List taskState = {taskState.tasks}/>
+      <List 
+        taskState = {taskState.tasks}
+        dispatch = {dispatch}/>
       <InputForm 
         dispatch={dispatch}/>
     </div>

@@ -11,7 +11,7 @@ const List = props => {
             <p>Place Holder -- List Container</p>
             <ol className="taskList">
                 {props.taskState.map(task=>(
-                    <Task task={task} key={task.id}/>
+                    <Task task={task} key={task.id} dispatch = {props.dispatch}/>
                 ))}
             </ol>
             <button>Clear Completed</button>

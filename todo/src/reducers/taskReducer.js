@@ -15,9 +15,15 @@ export const taskReducer = (state, action) => {
                 tasks:[...state.tasks, action.payload]
             }
         case "TOGGLE_COMPLETE":
-            return{
-                state
-            }
+            const updatedTasks = state.tasks.map( task =>{
+                if(task.id === action.payload){
+                    return{...task, completed: !task.completed};
+                }return task;
+            })
+            return {
+                ...state,
+                tasks:updatedTasks
+            }           
         case "REMOVE_TASK":
             return{
                 state
