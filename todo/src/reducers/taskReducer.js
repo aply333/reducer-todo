@@ -25,8 +25,12 @@ export const taskReducer = (state, action) => {
                 tasks:updatedTasks
             }           
         case "REMOVE_TASK":
+            const filteredTasks = state.tasks.filter(task => {
+                return !task.completed;
+            })
             return{
-                state
+                ...state,
+                tasks:filteredTasks
             }
         default:
             return state;

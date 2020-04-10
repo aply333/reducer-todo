@@ -6,6 +6,13 @@ const List = props => {
 
     console.log("From List.js:", props.taskState)
 
+    const buttonHandler = e => {
+        e.preventDefault()
+        props.dispatch({
+            type:"REMOVE_TASK",
+        })
+    }
+
     return(
         <div className="taskContainer">
             <p>Place Holder -- List Container</p>
@@ -14,7 +21,7 @@ const List = props => {
                     <Task task={task} key={task.id} dispatch = {props.dispatch}/>
                 ))}
             </ol>
-            <button>Clear Completed</button>
+            <button onClick={buttonHandler}>Clear Completed</button>
         </div>
     )
 }
